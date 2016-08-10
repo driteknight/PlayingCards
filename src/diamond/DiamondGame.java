@@ -5,21 +5,25 @@ import card.Card;
 import card.Deck;
 import card.DiscardPile;
 import diamond.strategy.RandomStrategy;
+import diamond.strategy.SameBidStrategy;
+import player.Computer;
+import player.Human;
+import player.Player;
 
 public class DiamondGame {
 
-	Player player;
-	Player computer;
+	Human human;
+	Computer computer;
 	DiscardPile discardPile;
 
 	public void init() {
 
-		player = new Player();
-		computer = new Player(new RandomStrategy());
+		human = new Human();
+		computer = new Computer(new SameBidStrategy());
 
 		Deck deck = new Deck(1);
 		
-		player.addCards(deck.getAllClubs());
+		human.addCards(deck.getAllClubs());
 		computer.addCards(deck.getAllSpades());
 
 		discardPile = new DiscardPile(deck.getAllDiamonds());
@@ -27,7 +31,7 @@ public class DiamondGame {
 	}
 
 	private boolean isValid(int playerBid) {
-		for (Card c : player.getHand().getCardsInHand()) {
+		for (Card c : human.getHand().getCardsInHand()) {
 			if (c.isSameValue(new Card(playerBid, "SPADES"))) {
 				return true;
 			}
@@ -37,7 +41,7 @@ public class DiamondGame {
 
 	private void printOutput() {
 		System.out.println("My Points : " + computer.getPoints());
-		System.out.println("Your Points : " + player.getPoints());
+		System.out.println("Your Points : " + human.getPoints());
 		System.out.println(findWinner());
 	}
 
@@ -46,9 +50,9 @@ public class DiamondGame {
 		if (playerBid < computerBid) {
 			computer.addPoint(bidOn);
 		} else if (computerBid < playerBid) {
-			player.addPoint(bidOn);
+			human.addPoint(bidOn);
 		} else {
-			player.addPoint(bidOn / 2);
+			human.addPoint(bidOn / 2);
 			computer.addPoint(bidOn / 2);
 		}
 
@@ -58,15 +62,15 @@ public class DiamondGame {
 	private void printRoundResults(int playerBid, int computerBid) {
 		System.out.println("Your Bid : " + playerBid);
 		System.out.println("My Bid : " + computerBid);
-		System.out.println("Your Points : " + player.getPoints());
+		System.out.println("Your Points : " + human.getPoints());
 		System.out.println("My Points : " + computer.getPoints());
 		System.out.println();
 	}
 
 	private String findWinner() {
-		if (computer.getPoints() > player.getPoints()) {
+		if (computer.getPoints() > human.getPoints()) {
 			return "I Win!!! Thanks for playing";
-		} else if (player.getPoints() > computer.getPoints()) {
+		} else if (human.getPoints() > computer.getPoints()) {
 			return "You Win!!! Congratulations";
 		} else {
 			return "It's a Draw!!!";
@@ -74,9 +78,9 @@ public class DiamondGame {
 	}
 
 	private Card getPlayerCard(int playerBid) {
-		for (Card c : player.getHand().getCardsInHand()) {
+		for (Card c : human.getHand().getCardsInHand()) {
 			if (c.isSameValue(new Card(playerBid, "SPADES"))) {
-				player.removeCard(c);
+				human.removeCard(c);
 				return c;
 			}
 		}
@@ -96,16 +100,17 @@ public class DiamondGame {
 			int bidOn = c.getValue();
 			System.out.println("Bid On : " + c.getValue());
 
-			System.out.println("Your Cards : " + driver.player.getHand());
+			System.out.println("Your Cards : " + driver.human.getHand());
 			System.out.println("Enter you bid : ");
 			playerBid = sc.nextInt();
 			while (!driver.isValid(playerBid)) {
 				System.out.println("Invalid Bid!!! Pls enter correct bid");
 				playerBid = sc.nextInt();
 			}
+			
 			playerCard = driver.getPlayerCard(playerBid);
-
-			driver.computer.addBidOn(c);
+			
+			driver.computer.addBidOnCard(c);
 			driver.evaluateResult(bidOn, playerBid, driver.computer.getBid(playerCard, c).getValue());
 			driver.computer.addOpponentCard(playerCard);
 		}
