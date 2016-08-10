@@ -1,10 +1,10 @@
 package card;
 
-public class Card{
+public class Card {
 	private int value;
 	private String displayValue;
-	private  String suit;
-	
+	private String suit;
+
 	public Card(int value, String displayValue, String suit) {
 		this.value = value;
 		this.displayValue = displayValue;
@@ -60,7 +60,7 @@ public class Card{
 	public String getSuit() {
 		return this.suit;
 	}
-	
+
 	public String getDisplayValue() {
 		return this.displayValue;
 	}
@@ -95,10 +95,9 @@ public class Card{
 
 		return false;
 	}
-	
 
 	public String toString() {
 		return this.suit + " " + this.displayValue;
 	}
-	
+
 }

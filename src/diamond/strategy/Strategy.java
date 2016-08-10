@@ -1,6 +1,4 @@
-package diamond.heart.strategy;
-
-import java.util.ArrayList;
+package diamond.strategy;
 
 import card.Card;
 import card.Hand;

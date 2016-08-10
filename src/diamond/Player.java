@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import card.Card;
 import card.Hand;
-import diamond.heart.strategy.RandomStrategy;
-import diamond.heart.strategy.Strategy;
+import diamond.strategy.RandomStrategy;
+import diamond.strategy.Strategy;
 
 public class Player {
 	int points;
@@ -57,9 +57,9 @@ public class Player {
 	public void addPoint(int num) {
 		this.points += num;
 	}
-	
+
 	public void addCards(ArrayList<Card> cards) {
-		for(Card card : cards) {
+		for (Card card : cards) {
 			hand.addCard(card);
 		}
 	}
@@ -71,7 +71,7 @@ public class Player {
 	public void removeCard(Card c) {
 		hand.removeCard(c);
 	}
-	
+
 	public void addOpponentCard(Card c) {
 		opponentHand.addCard(c);
 	}

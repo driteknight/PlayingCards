@@ -1,4 +1,5 @@
 package card;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,11 +24,11 @@ abstract public class Hand {
 		cardsInHand.remove(c);
 		return c;
 	}
-	
+
 	public ArrayList<Card> getCardsInHand() {
 		return this.cardsInHand;
 	}
-	
+
 	public ArrayList<Card> getAllDiamonds() {
 		ArrayList<Card> allDiamonds = new ArrayList<Card>();
 		for (Card c : cardsInHand) {
@@ -37,7 +38,7 @@ abstract public class Hand {
 		}
 		return allDiamonds;
 	}
-	
+
 	public void shuffle() {
 		Collections.shuffle(cardsInHand);
 	}
@@ -86,20 +87,20 @@ abstract public class Hand {
 	public String toString() {
 		return cardsInHand.toString();
 	}
-	
+
 	public void sortBySuit() {
-		this.cardsInHand.sort((Card c1,Card c2) -> c1.getSuit().compareTo(c2.getSuit()));
+		this.cardsInHand.sort((Card c1, Card c2) -> c1.getSuit().compareTo(c2.getSuit()));
 	}
-	
+
 	public void sortByValue() {
 		this.cardsInHand.sort((Card c1, Card c2) -> c1.getValue() - c2.getValue());
 	}
-	
+
 	public void sortBySuitAndValue() {
 		this.cardsInHand.sort(new Comparator<Card>() {
 
 			public int compare(Card o1, Card o2) {
-				if(o1.isSameSuit(o2)) {
+				if (o1.isSameSuit(o2)) {
 					return o1.getValue() - o2.getValue();
 				} else {
 					return o1.getSuit().compareTo(o2.getSuit());
@@ -107,9 +108,9 @@ abstract public class Hand {
 			}
 		});
 	}
-	
+
 	public int numOfCardsInHand() {
 		return cardsInHand.size();
 	}
-	
+
 }

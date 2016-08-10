@@ -1,4 +1,4 @@
-package diamond.heart.strategy;
+package diamond.strategy;
 
 import card.Card;
 import card.Hand;

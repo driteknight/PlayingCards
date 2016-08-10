@@ -45,8 +45,6 @@ public class Deck {
 		cardsInDeck.remove(c);
 		return c;
 	}
-	
-	
 
 	public ArrayList<Card> getAllDiamonds() {
 		ArrayList<Card> allDiamonds = new ArrayList<Card>();
@@ -98,20 +96,20 @@ public class Deck {
 
 		return cardsOfSameValue;
 	}
-	
+
 	public void sortBySuit() {
-		this.cardsInDeck.sort((Card c1,Card c2) -> c1.getSuit().compareTo(c2.getSuit()));
+		this.cardsInDeck.sort((Card c1, Card c2) -> c1.getSuit().compareTo(c2.getSuit()));
 	}
-	
+
 	public void sortByValue() {
 		this.cardsInDeck.sort((Card c1, Card c2) -> c1.getValue() - c2.getValue());
 	}
-	
+
 	public void sortBySuitAndValue() {
 		this.cardsInDeck.sort(new Comparator<Card>() {
 
 			public int compare(Card o1, Card o2) {
-				if(o1.isSameSuit(o2)) {
+				if (o1.isSameSuit(o2)) {
 					return o1.getValue() - o2.getValue();
 				} else {
 					return o1.getSuit().compareTo(o2.getSuit());
@@ -119,15 +117,15 @@ public class Deck {
 			}
 		});
 	}
-	
+
 	public ArrayList<Card> pick(int n) {
 		ArrayList<Card> pickedCards = new ArrayList<>();
-		for(int i = 0; i < n; i++) {
+		for (int i = 0; i < n; i++) {
 			pickedCards.add(removeCardOnTop());
 		}
 		return pickedCards;
 	}
-	
+
 	public int numOfCardsInDeck() {
 		return cardsInDeck.size();
 	}
