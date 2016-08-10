@@ -24,10 +24,6 @@ abstract public class Hand {
 		return c;
 	}
 	
-	public void addAll(card) {
-		
-	}
-	
 	public ArrayList<Card> getCardsInHand() {
 		return this.cardsInHand;
 	}

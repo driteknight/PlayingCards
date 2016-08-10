@@ -5,6 +5,15 @@ import java.util.Comparator;
 
 public class DiscardPile {
 	private ArrayList<Card> cardsInDiscardPile;
+	
+	public DiscardPile() {
+		cardsInDiscardPile = new ArrayList<>();;
+	}
+
+	public DiscardPile(ArrayList<Card> list) {
+		cardsInDiscardPile = new ArrayList<>();
+		cardsInDiscardPile.addAll(list);
+	}
 
 	public void addCard(Card card) {
 		cardsInDiscardPile.add(card);

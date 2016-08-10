@@ -1,15 +1,14 @@
 package diamond.heart.strategy;
 
-import java.util.ArrayList;
-
 import card.Card;
+import card.Hand;
 
-public class RandomStrategy extends Strategy{
+public class RandomStrategy extends Strategy {
 
 	@Override
-	public int getBid(ArrayList<Card> hand, int value) {
-		int r = (int) (Math.random() * (hand.size() - 1));
-		return hand.get(r).getValue();
+	public Card getBid(Hand playerHand, Hand opponentHand, Hand bidHand) {
+		int r = (int) (Math.random() * (playerHand.getCardsInHand().size() - 1));
+		return playerHand.getCardsInHand().get(r);
 	}
 
 }
