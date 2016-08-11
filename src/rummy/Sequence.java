@@ -14,4 +14,5 @@ public abstract class Sequence{
 	abstract public void isExtendable(Card c, int max);
 	abstract public void addCard(Card c);
 	abstract public boolean isValidSequence(int max);
+	abstract public boolean isOverlapping(Card c);
 }

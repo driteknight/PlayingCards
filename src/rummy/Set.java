@@ -22,4 +22,10 @@ public class Set extends Sequence{
 		return false;
 	}
 
+	@Override
+	public boolean isOverlapping(Card c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
