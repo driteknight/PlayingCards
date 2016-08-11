@@ -5,17 +5,12 @@ import java.util.Collections;
 import java.util.Comparator;
 
 abstract public class Hand {
-	private ArrayList<Card> cardsInHand;
+	protected ArrayList<Card> cardsInHand;
 
-	public Hand() {
-		cardsInHand = new ArrayList<>();
+	public ArrayList<Card> getCardsInHands() {
+		return cardsInHand;
 	}
-
-	public Hand(ArrayList<Card> card) {
-		cardsInHand = new ArrayList<>();
-		cardsInHand.addAll(card);
-	}
-
+	
 	public void addCard(Card c) {
 		cardsInHand.add(c);
 	}

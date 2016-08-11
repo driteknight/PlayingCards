@@ -19,7 +19,7 @@ public class Pack {
 		}
 
 		for (int i = 0; i < numOfJokers; ++i) {
-			cardsInPack.add(new Card("JOKER", "0"));
+			cardsInPack.add(new Card("0", "JOKER"));
 		}
 	}
 

@@ -1,4 +1,5 @@
 package diamond;
+
 import java.util.Scanner;
 
 import card.Card;
@@ -11,7 +12,6 @@ import player.Human;
 import player.Player;
 
 public class DiamondGame {
-
 	Human human;
 	Computer computer;
 	DiscardPile discardPile;
@@ -22,7 +22,7 @@ public class DiamondGame {
 		computer = new Computer(new SameBidStrategy());
 
 		Deck deck = new Deck(1);
-		
+
 		human.addCards(deck.getAllClubs());
 		computer.addCards(deck.getAllSpades());
 
@@ -52,8 +52,8 @@ public class DiamondGame {
 		} else if (computerBid < playerBid) {
 			human.addPoint(bidOn);
 		} else {
-			human.addPoint(bidOn / 2);
-			computer.addPoint(bidOn / 2);
+			human.addPoint((double)bidOn / 2);
+			computer.addPoint((double)bidOn / 2);
 		}
 
 		printRoundResults(playerBid, computerBid);
@@ -107,9 +107,9 @@ public class DiamondGame {
 				System.out.println("Invalid Bid!!! Pls enter correct bid");
 				playerBid = sc.nextInt();
 			}
-			
+
 			playerCard = driver.getPlayerCard(playerBid);
-			
+
 			driver.computer.addBidOnCard(c);
 			driver.evaluateResult(bidOn, playerBid, driver.computer.getBid(playerCard, c).getValue());
 			driver.computer.addOpponentCard(playerCard);

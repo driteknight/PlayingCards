@@ -9,10 +9,10 @@ import diamond.strategy.RandomStrategy;
 import diamond.strategy.Strategy;
 
 public abstract class Player {
-	protected int points;
+	protected double points;
 	protected Hand hand;
 
-	public int getPoints() {
+	public double getPoints() {
 		return points;
 	}
 
@@ -20,8 +20,8 @@ public abstract class Player {
 		return hand;
 	}
 
-	public void addPoint(int num) {
-		this.points += num;
+	public void addPoint(double d) {
+		this.points += d;
 	}
 
 	public void addCards(ArrayList<Card> cards) {

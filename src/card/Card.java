@@ -95,6 +95,10 @@ public class Card {
 
 		return false;
 	}
+	
+	public boolean isJoker() {
+		return this.suit.equals("JOKER");
+	}
 
 	public String toString() {
 		return this.suit + " " + this.displayValue;
